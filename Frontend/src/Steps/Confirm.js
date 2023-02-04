@@ -1,14 +1,23 @@
 import { useAppState } from "../state";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import { Button, Form, Section, SectionRow } from "../Forms";
 
 export const Confirm = () => {
   const [state] = useAppState();
   const { handleSubmit } = useForm({ defaultValues: state });
 
-  const submitData = (data) => {
-    console.info(data);
-    // Submit data to the server
+  const submitData = async (data, e) => {
+    e.preventDefault();
+    try {
+      console.log(data)
+      await axios.post("http://localhost:5000/users/signup", data, { headers: { 'Content-Type': 'application/json' }})
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+    
   };
 
   return (
