@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAppState } from "../state";
 import { useNavigate } from "react-router-dom";
-import { Button, Field, Form } from "../Forms";
+//import { Button, Field, Form } from "../Forms";
 
 export const About = () => {
   const [state, setState] = useAppState();
@@ -14,27 +14,28 @@ export const About = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(saveData)}>
-      <fieldset>
-        <legend>About</legend>
-        <Field label="About me">
+    <form onSubmit={handleSubmit(saveData)}>
+      <fieldset className="fieldset">
+        <legend className="legend">About</legend>
+        <field>
+        <label className="label"> About You </label>
           <textarea
             {...register("about")}
             id="about"
             className="form-control"
           />
-        </Field>
+        </field>
         <div className="button-row">
-          <Button
+          <button
             type="button"
             variant="secondary"
             onClick={() => navigate("/education")}
           >
             {"<"} Previous
-          </Button>
-          <Button>Next {">"}</Button>
+          </button>
+          <button className="button">Next {">"}</button>
         </div>
       </fieldset>
-    </Form>
+    </form>
   );
 };
