@@ -6,7 +6,6 @@ import ReactDatePicker from "react-datepicker";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 
-
 //import { Button, Field, Form, Input } from "../Forms";
 
 export const Education = () => {
@@ -50,7 +49,7 @@ return (
             <div className="control">
               <Controller
                 control={control}
-                name="startYear"
+                name="endYear"
                 render={({ field }) => (
                   <ReactDatePicker
                     className="Textfield"

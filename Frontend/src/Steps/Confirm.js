@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Form, section, div } from "../Forms";
+//import { Button, Form, section, div } from "../Forms";
 
 export const Confirm = () => {
   const [state] = useAppState();
@@ -50,47 +50,64 @@ export const Confirm = () => {
         </div>
       </section>
 
-      <section title="Academic Information" url="/education">
-        <div>
-          <div className="section-row">University</div>
-          <div>{state.startYear}</div>
+      <section>
+        <div className="section mb-4">
+          <div className="title-row mb-4">
+            <h4>Academic Information</h4>
+            <button type="button" variant="secondary" onClick={() => navigate("/education")}>
+            Edit
+            </button>
+          </div>
+          <div className="section-row">
+            <div> University </div>
+            <div>{state.university}</div>
+          </div>
+          <div className="section-row">
+            <div> Degree </div>
+            <div>{state.degre}</div>
+          </div>
+          <div className="section-row">
+            <div>Institution Name</div>
+            <div>{state.institutionName}</div>
+          </div>
+          <div className="section-row">
+            <div>Course Name</div>
+            <div>{state.courseName}</div>
+          </div>
+          <div className="section-row">
+            <div>Specialization</div>
+            <div>{state.specialization}</div>
+          </div>
+          <div className="section-row">
+            <div>Award</div>
+            <div>{state.award}</div>
+          </div>
+          <div className="section-row">
+            <div>Grade</div>
+            <div>{state.grade}</div>
+          </div>
         </div>
-        <div>
-          <div className="section-row">Degree</div>
-          <div>{state.endYear}</div>
-        </div>
-        <div>
-          <div className="section-row">Institution Name</div>
-          <div>{state.institutionName}</div>
-        </div>
-        <div>
-          <div className="section-row">Course Name</div>
-          <div>{state.courseName}</div>
-        </div>
-        <div>
-          <div className="section-row">Specialization</div>
-          <div>{state.specialization}</div>
-        </div>
-        <div>
-          <div className="section-row">Award</div>
-          <div>{state.award}</div>
-        </div>
-        <div>
-          <div className="section-row">Grade</div>
-          <div>{state.grade}</div>
+        </section>
+        <section>
+        <div className="section mb-4">
+          <div className="title-row mb-4">
+            <h4>About</h4>
+            <button type="button" variant="secondary" onClick={() => navigate("/about")}>
+            Edit
+            </button>
+          </div>
+          <div className="section-row">
+            <div>About</div>
+            <div>{state.about}</div>
+          </div>
         </div>
       </section>
-      <section title="About" url="/about">
-        <div>
-          <div className="section-row">About me</div>
-          <div>{state.about}</div>
-        </div>
-      </section>
+
       <div className="clo-md-12 d-flex justify-content-start">
         <button>Submit</button >
       </div>
     </form>
-  );
+    );
 };
 
 

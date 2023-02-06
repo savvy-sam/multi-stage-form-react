@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAppState } from "../state";
 import { useNavigate } from "react-router-dom";
-import { Button, Field, Form, Input } from "../Forms";
+//import { Button, Field, Form, Input } from "../Forms";
 
 export const Contact = () => {
   const [state, setState] = useAppState();
@@ -20,34 +20,54 @@ export const Contact = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(saveData)}>
+    <form onSubmit={handleSubmit(saveData)}>
       <fieldset>
         <legend>Contact</legend>
-        <Field label="First name" error={errors?.firstName}>
-          <Input
+        <div className="col-sm-12 mb-3">
+          <div>
+          <label> First Name</label>
+          <input
             {...register("firstName", { required: "First name is required" })}
-            id="first-name"
+            id="first-name" className="form-control"
           />
-        </Field>
-        <Field label="Last name" error={errors?.lastName}>
-          <Input {...register("lastName")} id="last-name" />
-        </Field>
-        <Field label="Email" error={errors?.email}>
-          <Input
+          {<small className="error">{errors.firstName?.message}</small>}
+          </div>
+        </div>
+
+        <div className="col-sm-12 mb-3">
+          <div>
+            <label> Last Name</label>
+            <input
+              {...register("lastName", { required: "Last name is required" })}
+              id="first-name" className="form-control"
+            />
+            {<small className="error">{errors.lastName?.message}</small>}
+          </div>
+        </div>
+
+        <div className="col-sm-12 mb-3">
+          <label className="label"> Email </label>
+          <input
             {...register("email", { required: "Email is required" })}
             type="email"
             id="email"
           />
-        </Field>
-        <Field label="Password" error={errors?.password}>
-          <Input
+        </div>
+        {<small className="error">{errors.lastName?.message}</small>}
+
+        <div className="col-sm-12 mb-3">
+          <label className="label"> Password</label>
+          <input
             {...register("password", { required: "Password is required" })}
             type="password"
             id="password"
           />
-        </Field>
-        <Field label="Confirm password" error={errors?.confirmPassword}>
-          <Input
+           {<small className="error">{errors.password?.message}</small>}
+        </div>
+
+        <div className="col-sm-12 mb-3">
+          <label className="label"> Confirm Password</label>
+          <input
             {...register("confirmPassword", {
               required: "Confirm the password",
               validate: (value) =>
@@ -56,9 +76,10 @@ export const Contact = () => {
             type="password"
             id="password-confirm"
           />
-        </Field>
-        <Button>Next {">"}</Button>
+          {<small className="error">{errors.confirmPassword?.message}</small>}
+        </div>
+        <button>Next {">"}</button>
       </fieldset>
-    </Form>
+    </form>
   );
 };
