@@ -27,7 +27,17 @@ export const Contact = () => {
           <div>
           <label> First Name</label>
           <input
-            {...register("firstName", { required: "First name is required" })}
+            {...register("firstName", { 
+              
+              required: {
+              value: true,
+              message: "First Name is Required"
+            },
+            maxLength: {
+              value: 20,
+              message: "Name must be shorter than 20 characters"
+            }
+           })}
             id="first-name" className="form-control"
           />
           {<small className="error">{errors.firstName?.message}</small>}
@@ -48,17 +58,38 @@ export const Contact = () => {
         <div className="col-sm-12 mb-3">
           <label className="label"> Email </label>
           <input
-            {...register("email", { required: "Email is required" })}
+            {...register("email", { required: 
+              { value: true,
+               message: "Email is Required"},
+
+               maxLength: {
+                value: 20,
+                message: "Email cannot be longer than 20 characters"
+               },
+
+               pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "Enter a Valid Email"
+               }
+              })}
             type="email"
             id="email"
           />
         </div>
-        {<small className="error">{errors.lastName?.message}</small>}
+        {<small className="error">{errors.email?.message}</small>}
 
         <div className="col-sm-12 mb-3">
           <label className="label"> Password</label>
           <input
-            {...register("password", { required: "Password is required" })}
+            {...register("password", {
+               required: { value: true,
+                            message: "Password is Required" },
+                          
+              minLength: {
+                value: 7,
+                message: "Password Must be Longer than 7 characters"
+              }
+      })}
             type="password"
             id="password"
           />

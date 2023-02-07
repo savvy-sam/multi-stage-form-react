@@ -17,14 +17,34 @@ export const About = () => {
     <form onSubmit={handleSubmit(saveData)}>
       <fieldset className="fieldset">
         <legend className="legend">About</legend>
-        <field>
+        <div className="field">
         <label className="label"> About You </label>
           <textarea
             {...register("about")}
             id="about"
             className="form-control"
           />
-        </field>
+        </div>
+        <div className="field">
+        <label className="label"> Your Image </label>
+          <input
+            {...register("image")}
+            id="image"
+            type="file"
+            className="form-control"
+          />
+        </div>
+
+        <div className="field">
+        <label className="label"> Attach Your Documents </label>
+          <input
+            {...register("cv")}
+            id="cv"
+            type="file"
+            className="form-control"
+          />
+        </div>
+    
         <div className="button-row">
           <button
             type="button"

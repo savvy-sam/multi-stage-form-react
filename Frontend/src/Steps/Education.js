@@ -9,6 +9,10 @@ import "react-datepicker/dist/react-datepicker.css";
 //import { Button, Field, Form, Input } from "../Forms";
 
 export const Education = () => {
+
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
   const [state, setState] = useAppState();
   const { handleSubmit, register, control } = useForm({ defaultValues: state });
   const navigate = useNavigate();
@@ -33,10 +37,14 @@ return (
                   control={control}
                   name="startYear"
                   render={({ field }) => (
-                    <ReactDatePicker
+                    <DatePicker
                       className="Textfield"
                       onChange={(e) => field.onChange(e)}
                       selected={field.value}
+                      dateFormat="yyyy"
+                      showYearPicker
+                      maxDate={new Date() }
+
                     />
                   )}
                 />
@@ -51,10 +59,13 @@ return (
                 control={control}
                 name="endYear"
                 render={({ field }) => (
-                  <ReactDatePicker
+                  <DatePicker
                     className="Textfield"
                     onChange={(e) => field.onChange(e)}
                     selected={field.value}
+                    dateFormat="yyyy"
+                    showYearPicker
+                    maxDate={new Date() }
                   />
                 )}
               />
