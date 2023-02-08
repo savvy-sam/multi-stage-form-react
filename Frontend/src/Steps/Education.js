@@ -30,7 +30,7 @@ return (
       <fieldset className="fieldset">
         <legend className="legend">Academic Information</legend>
         <div className="field">
-          <field>
+          <div>
             <label className="label"> Start Year  </label>
               <div className="control">
                 <Controller
@@ -49,10 +49,10 @@ return (
                   )}
                 />
               </div>
-          </field>
+          </div>
         </div>
 
-        <field className="field">
+        <div className="field">
           <label className="label"> End Year </label>
             <div className="control">
               <Controller
@@ -70,30 +70,30 @@ return (
                 )}
               />
             </div>
-        </field>
-        <field className="field"> 
+        </div>
+        <div className="field"> 
           <label className= "label"> Institution Name </label>
           <div className="control">
           <input type="text" className="input" {...register("institutionName")} id="institutionName" />
           </div>
-        </field>
+        </div>
 
-        <field className="field">
+        <div className="field">
           <label className="label"> Course Name </label>
             <div className="control">
             <input type="text" className="input" {...register("courseName")} id="courseName" />
             </div>
-        </field>
+        </div>
 
-        <field class="field">
-          <label class="label">Specialization</label>
+        <div className="field">
+          <label className="label">Specialization</label>
           <div className="control">
           <input {...register("specialization")} className="input" id="specialization" />
           </div>
-        </field>
+        </div>
 
-        <field className="field">
-          <label class="label"> Award </label>
+        <div className="field">
+          <label className="label"> Award </label>
           <div className="select-is-fullwidth">
             <select {...register("award")} className="input" id="award" >
             <option value="A">Option A</option>
@@ -101,9 +101,9 @@ return (
             <option value="C">Option C</option>
             </select>
           </div>
-        </field>
+        </div>
 
-        <field className="field">
+        <div className="field">
           <div className="select-is-fullwidth">
             <select {...register("grade")} id="grade" >
             <option value="A">Option A</option>
@@ -111,7 +111,7 @@ return (
             <option value="C">Option C</option>
             </select>
           </div>
-        </field>
+        </div>
         
         <div className="button-row">
           <button variant="secondary" onClick={() => navigate("/")}>
