@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 //import { Button, Form, section, div } from "../Forms";
 
 export const Confirm = () => {
-  const [state] = useAppState();
-  const { handleSubmit } = useForm({ defaultValues: state });
+  const { userData, setStep } = useAppState();
+  const { handleSubmit } = useForm({ defaultValues: userData });
 
   const submitData = async (data, e) => {
     e.preventDefault();
@@ -15,14 +15,15 @@ export const Confirm = () => {
       console.log(data)
       await axios.post("http://localhost:5000/users/signup", data, { headers: { 'Content-Type': 'application/json' }})
 
-      navigate("/");
+      //navigate("/");
+
     } catch (error) {
       console.log(error);
     }
     
   };
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   return (
     <form onSubmit={handleSubmit(submitData)}>
@@ -31,21 +32,21 @@ export const Confirm = () => {
         <div className="section mb-4">
           <div className="title-row mb-4">
             <h4>Personal Info</h4>
-            <button type="button" variant="secondary" onClick={() => navigate("/")}>
+            <button type="button" variant="secondary" onClick={() => setStep(1)}>
             Edit
             </button>
           </div>
           <div className="section-row">
             <div>First name</div>
-            <div>{state.firstName}</div>
+            <div>{userData.firstName}</div>
           </div>
           <div className="section-row">
             <div>Last name</div>
-            <div>{state.lastName}</div>
+            <div>{userData.lastName}</div>
           </div>
           <div className="section-row">
             <div>Email</div>
-            <div>{state.email}</div>
+            <div>{userData.email}</div>
           </div>
         </div>
       </section>
@@ -54,37 +55,37 @@ export const Confirm = () => {
         <div className="section mb-4">
           <div className="title-row mb-4">
             <h4>Academic Information</h4>
-            <button type="button" variant="secondary" onClick={() => navigate("/education")}>
+            <button type="button" variant="secondary" onClick={() => setStep(2)}>
             Edit
             </button>
           </div>
           <div className="section-row">
             <div> University </div>
-            <div>{state.university}</div>
+            <div>{userData.university}</div>
           </div>
           <div className="section-row">
             <div> Degree </div>
-            <div>{state.degre}</div>
+            <div>{userData.degre}</div>
           </div>
           <div className="section-row">
             <div>Institution Name</div>
-            <div>{state.institutionName}</div>
+            <div>{userData.institutionName}</div>
           </div>
           <div className="section-row">
             <div>Course Name</div>
-            <div>{state.courseName}</div>
+            <div>{userData.courseName}</div>
           </div>
           <div className="section-row">
             <div>Specialization</div>
-            <div>{state.specialization}</div>
+            <div>{userData.specialization}</div>
           </div>
           <div className="section-row">
             <div>Award</div>
-            <div>{state.award}</div>
+            <div>{userData.award}</div>
           </div>
           <div className="section-row">
             <div>Grade</div>
-            <div>{state.grade}</div>
+            <div>{userData.grade}</div>
           </div>
         </div>
         </section>
@@ -92,13 +93,13 @@ export const Confirm = () => {
         <div className="section mb-4">
           <div className="title-row mb-4">
             <h4>About</h4>
-            <button type="button" variant="secondary" onClick={() => navigate("/about")}>
+            <button type="button" variant="secondary" onClick={() => setStep(3)}>
             Edit
             </button>
           </div>
           <div className="section-row">
             <div>About</div>
-            <div>{state.about}</div>
+            <div>{userData.about}</div>
           </div>
         </div>
       </section>

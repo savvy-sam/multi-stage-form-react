@@ -11,14 +11,14 @@ import { Card, CardContent } from "@mui/material";
 
 export const Education = () => {
   
-  const [state, setState] = useAppState();
-  const { handleSubmit, register, control } = useForm({ defaultValues: state });
-  const navigate = useNavigate();
+  const {setStep, userData, setUserData } = useAppState();
+  const { handleSubmit, register, control } = useForm({ defaultValues: userData });
+  //const navigate = useNavigate();
 
 
   const saveData = (data) => {
-    setState({ ...state, ...data });
-    navigate("/about");
+    setUserData({ ...userData, ...data });
+  //  navigate("/about");
   };
 
 return (
@@ -26,7 +26,7 @@ return (
   <CardContent>
   <div className="columns mt-5 is-centered">
     <div className="column is-half">
-    <form onSubmit={handleSubmit(saveData)}>
+    <form onChange={handleSubmit(saveData)}>
       <fieldset className="fieldset">
         <legend className="legend">Academic Information</legend>
         <div className="field">
@@ -114,10 +114,10 @@ return (
         </div>
         
         <div className="button-row">
-          <button variant="secondary" onClick={() => navigate("/")}>
-            {"<"} Previous
+          <button variant="secondary" onClick={() => setStep(1)}>
+           Previous
           </button>
-          <button>Next {">"}</button>
+          <button onClick={()=> setStep(3)}>Next </button>
         </div>
       </fieldset>
     </form>

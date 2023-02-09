@@ -1,31 +1,30 @@
 import { useForm } from "react-hook-form";
 import { useAppState } from "../state";
 import { useNavigate } from "react-router-dom";
-import { Grid, TextField, Button, Card, CardContent, Typography } from '@mui/material';
+import { Grid, TextField, Button, Card, CardContent, Typography, Box } from '@mui/material';
 import { makeStyles } from '@mui/material/styles'
 
 //import { Button, Field, Form, Input } from "../Forms";
 
 export const Contact = () => {
-  const [state, setState] = useAppState();
+  const {setStep, userData, setUserData } = useAppState();
   const {
     handleSubmit,
     register,
     watch,
     formState: { errors }
-  } = useForm({ defaultValues: state, mode: "onSubmit" });
+  } = useForm({ defaultValues: userData });
   const watchPassword = watch("password");
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const saveData = (data) => {
-    setState({ ...state, ...data });
-    navigate("/education");
+    setUserData({ ...userData, ...data });
+    //navigate("/education");
   };
 
   return (
-    <Card>
-    <CardContent>
-    <form onSubmit={handleSubmit(saveData)}>
+    <Box>
+    <form onChange={handleSubmit(saveData)}>
       <fieldset>
         <legend>Contact</legend>
         <div className="col-sm-12 mb-3">
@@ -114,10 +113,9 @@ export const Contact = () => {
           />
           {<small className="error">{errors.confirmPassword?.message}</small>}
         </div>
-        <button>Next {">"}</button>
+        <button onClick={()=> setStep(2)}> Next </button>
       </fieldset>
     </form>
-    </CardContent>
-    </Card>
+    </Box>
   );
 };

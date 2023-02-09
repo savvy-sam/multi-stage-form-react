@@ -4,10 +4,14 @@ export const AppStateContext = createContext();
 
 export function AppProvider({ children }) {
 
-  const value = useState({});
+  //const value = useState({});
+
+  const [currentStep, setStep]= useState(1);
+  const [userData, setUserData]= useState([]);
+  const [finalData, setFinalData]= useState([]);
 
   return (
-    <AppStateContext.Provider value={value}>
+    <AppStateContext.Provider value={{currentStep, setStep, userData, setUserData, finalData, setFinalData}}>
       {children}
     </AppStateContext.Provider>
   );

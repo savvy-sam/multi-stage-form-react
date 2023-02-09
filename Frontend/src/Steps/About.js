@@ -5,19 +5,19 @@ import { Card, CardContent } from "@mui/material";
 //import { Button, Field, Form } from "../Forms";
 
 export const About = () => {
-  const [state, setState] = useAppState();
-  const { handleSubmit, register } = useForm({ defaultValues: state });
-  const navigate = useNavigate();
+  const {setStep, userData, setUserData} = useAppState();
+  const { handleSubmit, register } = useForm({ defaultValues: userData });
+  //const navigate = useNavigate();
 
   const saveData = (data) => {
-    setState({ ...state, ...data });
-    navigate("/confirm");
+    setUserData({ ...userData, ...data });
+    //navigate("/confirm");
   };
 
   return (
     <Card>
     <CardContent>
-    <form onSubmit={handleSubmit(saveData)}>
+    <form onChange={handleSubmit(saveData)}>
       <fieldset className="fieldset">
         <legend className="legend">About</legend>
         <div className="field">
@@ -52,11 +52,11 @@ export const About = () => {
           <button
             type="button"
             variant="secondary"
-            onClick={() => navigate("/education")}
+            onClick={() => setStep(2)}
           >
-            {"<"} Previous
+             Previous
           </button>
-          <button className="button">Next {">"}</button>
+          <button onClick={() => setStep(4)} className="button">Next </button>
         </div>
       </fieldset>
     </form>

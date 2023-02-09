@@ -1,4 +1,82 @@
-import * as React from 'react';
+import React from 'react'
+import { Stepper, StepLabel, Step } from '@mui/material'
+import { Education } from './Education'
+import { Contact } from './Contact'
+import { Confirm } from './Confirm'
+import { About } from './About'
+import { useAppState } from '../state'
+
+
+
+export default function StepperBar () {
+
+  const{ currentStep, finalData} = useAppState();
+
+  function showStep(step){
+    switch(step){
+      case 1:
+        return < Contact/>
+      case 2:
+        return < Education/>
+
+      case 3:
+        return < About/>
+
+      case 4:
+        return < Confirm />
+    }
+
+  }
+  return (
+    <div className="center-stepper">
+    <Stepper style={{width: '18%'}} activeStep={currentStep-1} orientation= "horizontal">
+      <Step>
+      <StepLabel>Contacts</StepLabel>
+      </Step>
+      <Step>
+      <StepLabel>Education</StepLabel>
+      </Step>
+      <Step>
+      <StepLabel>About</StepLabel>
+      </Step>
+      <Step>
+      <StepLabel>Contact</StepLabel>
+      </Step>
+    </Stepper>
+    <div>
+      {showStep(currentStep)}
+    </div>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import * as React from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
