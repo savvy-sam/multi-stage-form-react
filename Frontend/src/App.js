@@ -10,7 +10,6 @@ export const App = () => {
   return (
     <AppProvider>
       <Router>
-        <Stepper />
         <Routes>
           <Route path="/" element={<Contact />} />
           <Route path="/education" element={<Education />} />

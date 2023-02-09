@@ -3,7 +3,9 @@ import { createContext, useContext, useState } from "react";
 export const AppStateContext = createContext();
 
 export function AppProvider({ children }) {
+
   const value = useState({});
+
   return (
     <AppStateContext.Provider value={value}>
       {children}

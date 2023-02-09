@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useAppState } from "../state";
 import { useNavigate } from "react-router-dom";
+import { Grid, TextField, Button, Card, CardContent, Typography } from '@mui/material';
+import { makeStyles } from '@mui/material/styles'
+
 //import { Button, Field, Form, Input } from "../Forms";
 
 export const Contact = () => {
@@ -20,6 +23,8 @@ export const Contact = () => {
   };
 
   return (
+    <Card>
+    <CardContent>
     <form onSubmit={handleSubmit(saveData)}>
       <fieldset>
         <legend>Contact</legend>
@@ -112,5 +117,7 @@ export const Contact = () => {
         <button>Next {">"}</button>
       </fieldset>
     </form>
+    </CardContent>
+    </Card>
   );
 };

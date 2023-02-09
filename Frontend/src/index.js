@@ -1,7 +1,8 @@
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles.scss";
-import './index.css';
+//import './index.css';
 import { App } from "./App";
 
 
@@ -11,7 +12,7 @@ const root = createRoot(rootElement);
 root.render(
   <StrictMode>
     <div className="App">
-      <h1 className="text-xl text-red-500 font-bld underline"> Welcome Samson Chege </h1>
+      <h1 className="text-xl text-red-500 font-bld underline"> Welcome To Register Page </h1>
       <App />
     </div>
   </StrictMode>

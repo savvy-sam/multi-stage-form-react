@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAppState } from "../state";
 import { useNavigate } from "react-router-dom";
+import { Card, CardContent } from "@mui/material";
 //import { Button, Field, Form } from "../Forms";
 
 export const About = () => {
@@ -14,6 +15,8 @@ export const About = () => {
   };
 
   return (
+    <Card>
+    <CardContent>
     <form onSubmit={handleSubmit(saveData)}>
       <fieldset className="fieldset">
         <legend className="legend">About</legend>
@@ -57,5 +60,7 @@ export const About = () => {
         </div>
       </fieldset>
     </form>
+    </CardContent>
+    </Card>
   );
 };

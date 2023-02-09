@@ -5,14 +5,12 @@ import DatePicker from "react-datepicker";
 import ReactDatePicker from "react-datepicker";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
+import { Card, CardContent } from "@mui/material";
 
 //import { Button, Field, Form, Input } from "../Forms";
 
 export const Education = () => {
-
-  const current = new Date();
-  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-
+  
   const [state, setState] = useAppState();
   const { handleSubmit, register, control } = useForm({ defaultValues: state });
   const navigate = useNavigate();
@@ -24,6 +22,8 @@ export const Education = () => {
   };
 
 return (
+  <Card>
+  <CardContent>
   <div className="columns mt-5 is-centered">
     <div className="column is-half">
     <form onSubmit={handleSubmit(saveData)}>
@@ -123,5 +123,7 @@ return (
     </form>
     </div>
   </div>
+  </CardContent>
+  </Card>
 );
 };
