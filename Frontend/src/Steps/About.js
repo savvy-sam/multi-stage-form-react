@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAppState } from "../state";
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent } from "@mui/material";
+import { Card, CardContent, Button } from "@mui/material";
 //import { Button, Field, Form } from "../Forms";
 
 export const About = () => {
@@ -33,7 +33,7 @@ export const About = () => {
           <input
             {...register("image")}
             id="image"
-            type="file"
+            type="text"
             className="form-control"
           />
         </div>
@@ -49,14 +49,14 @@ export const About = () => {
         </div>
     
         <div className="button-row">
-          <button
+          <Button
             type="button"
             variant="secondary"
             onClick={() => setStep(2)}
           >
              Previous
-          </button>
-          <button onClick={() => setStep(4)} className="button">Next </button>
+          </Button>
+          <Button onClick={() => setStep(4)} className="button">Next </Button>
         </div>
       </fieldset>
     </form>

@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import ReactDatePicker from "react-datepicker";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
-import { Card, CardContent } from "@mui/material";
+import { Card, CardContent, Button } from "@mui/material";
 
 //import { Button, Field, Form, Input } from "../Forms";
 
@@ -114,10 +114,10 @@ return (
         </div>
         
         <div className="button-row">
-          <button variant="secondary" onClick={() => setStep(1)}>
+          <Button variant="secondary" onClick={() => setStep(1)}>
            Previous
-          </button>
-          <button onClick={()=> setStep(3)}>Next </button>
+          </Button>
+          <Button onClick={()=> setStep(3)}>Next </Button>
         </div>
       </fieldset>
     </form>

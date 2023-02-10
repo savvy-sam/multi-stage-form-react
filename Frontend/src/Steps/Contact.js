@@ -1,8 +1,9 @@
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { useAppState } from "../state";
 import { useNavigate } from "react-router-dom";
 import { Grid, TextField, Button, Card, CardContent, Typography, Box } from '@mui/material';
 import { makeStyles } from '@mui/material/styles'
+import { Container } from "react-bootstrap";
 
 //import { Button, Field, Form, Input } from "../Forms";
 
@@ -12,10 +13,11 @@ export const Contact = () => {
     handleSubmit,
     register,
     watch,
-    formState: { errors }
-  } = useForm({ defaultValues: userData });
+    formState: { isValid, errors }
+  } = useForm({ defaultValues: userData, mode: "onBlur"});
   const watchPassword = watch("password");
   //const navigate = useNavigate();
+
 
   const saveData = (data) => {
     setUserData({ ...userData, ...data });
@@ -23,8 +25,9 @@ export const Contact = () => {
   };
 
   return (
-    <Box>
-    <form onChange={handleSubmit(saveData)}>
+    <Card>
+      <CardContent>
+    <form className onBlur={handleSubmit(saveData)}>
       <fieldset>
         <legend>Contact</legend>
         <div className="col-sm-12 mb-3">
@@ -42,7 +45,6 @@ export const Contact = () => {
               message: "Name must be shorter than 20 characters"
             }
            })}
-            id="first-name" className="form-control"
           />
           {<small className="error">{errors.firstName?.message}</small>}
           </div>
@@ -53,7 +55,6 @@ export const Contact = () => {
             <label> Last Name</label>
             <input
               {...register("lastName", { required: "Last name is required" })}
-              id="first-name" className="form-control"
             />
             {<small className="error">{errors.lastName?.message}</small>}
           </div>
@@ -113,9 +114,10 @@ export const Contact = () => {
           />
           {<small className="error">{errors.confirmPassword?.message}</small>}
         </div>
-        <button onClick={()=> setStep(2)}> Next </button>
+        <Button disabled= {!isValid} onClick={()=> setStep(2)}> Next </Button>
       </fieldset>
     </form>
-    </Box>
+      </CardContent>
+    </Card>
   );
 };

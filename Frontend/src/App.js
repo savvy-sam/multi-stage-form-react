@@ -1,18 +1,19 @@
+import { Container } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AppProvider } from "./state";
-//import { Contact } from "./Steps/Contact";
-//import { Education } from "./Steps/Education";
-//import { About } from "./Steps/About";
-//import { Confirm } from "./Steps/Confirm";
 import StepperBar from "./Steps/Stepper";
-//import HorizontalLinearStepper from "./Steps/Stepper"
+import Login from "./Login/login";
+
 
 export const App = () => {
   return (
     <AppProvider>
-      <header>
-      < StepperBar/>
-      </header>
+      <Router>
+       <Routes>
+        <Route path="/register" element={< StepperBar />} />
+        <Route path="/login" element={< Login />}/>
+      </Routes>
+      </Router>
     </AppProvider>
   );
 };

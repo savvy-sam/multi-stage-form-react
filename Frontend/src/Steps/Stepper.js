@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stepper, StepLabel, Step } from '@mui/material'
+import { Stepper, StepLabel, Step, Button } from '@mui/material'
 import { Education } from './Education'
 import { Contact } from './Contact'
 import { Confirm } from './Confirm'
@@ -40,7 +40,7 @@ export default function StepperBar () {
       <StepLabel>About</StepLabel>
       </Step>
       <Step>
-      <StepLabel>Contact</StepLabel>
+      <StepLabel>Confirm</StepLabel>
       </Step>
     </Stepper>
     <div>

@@ -10,12 +10,13 @@ export const Confirm = () => {
   const { handleSubmit } = useForm({ defaultValues: userData });
 
   const submitData = async (data, e) => {
+
     e.preventDefault();
     try {
       console.log(data)
       await axios.post("http://localhost:5000/users/signup", data, { headers: { 'Content-Type': 'application/json' }})
 
-      //navigate("/");
+      navigate("/login");
 
     } catch (error) {
       console.log(error);
@@ -23,7 +24,7 @@ export const Confirm = () => {
     
   };
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <form onSubmit={handleSubmit(submitData)}>
@@ -105,7 +106,7 @@ export const Confirm = () => {
       </section>
 
       <div className="clo-md-12 d-flex justify-content-start">
-        <button>Submit</button >
+        <button type="submit">Submit</button >
       </div>
     </form>
     );
